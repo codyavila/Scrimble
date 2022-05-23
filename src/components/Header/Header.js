@@ -1,44 +1,22 @@
-import React, { Fragment } from 'react'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import { Link, NavLink } from 'react-router-dom'
-
-const authenticatedOptions = (
-  <Fragment>
-    <NavLink to='/change-password' className='nav-link'>Change Password</NavLink>
-    <NavLink to='/sign-out' className='nav-link'>Sign Out</NavLink>
-  </Fragment>
-)
-
-const unauthenticatedOptions = (
-  <Fragment>
-    <NavLink to='/sign-up' className='nav-link'>Sign Up</NavLink>
-    <NavLink to='/sign-in' className='nav-link'>Sign In</NavLink>
-  </Fragment>
-)
-
-const alwaysOptions = (
-  <Fragment>
-    <NavLink exact to='/' className='nav-link'>Home</NavLink>
-  </Fragment>
-)
-
-const Header = ({ user }) => (
-  <Navbar bg='primary' variant='dark' expand='md'>
-    <Navbar.Brand>
-      <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>react-auth-template</Link>
-    </Navbar.Brand>
-    <Navbar.Toggle aria-controls='basic-navbar-nav' />
-    <Navbar.Collapse id='basic-navbar-nav'>
-      <Nav className='ml-auto'>
-        {user && (
-          <span className='navbar-text mr-2'>Welcome, {user.email}</span>
-        )}
-        {alwaysOptions}
-        {user ? authenticatedOptions : unauthenticatedOptions}
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
-)
+import React from 'react'
+import { Navbar, Nav, Container } from 'react-bootstrap'
+const Header = () => {
+  return (
+    <header>
+      <Navbar bg='light' expand='lg' className='py-4'>
+        <Container>
+          <Navbar.Brand href='/'>SCRIMBLE</Navbar.Brand>
+          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='ms-auto'>
+              <Nav.Link href='/cart'>Cart</Nav.Link>
+              <Nav.Link href='/sign-in'>Sign In</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </header>
+  )
+}
 
 export default Header
